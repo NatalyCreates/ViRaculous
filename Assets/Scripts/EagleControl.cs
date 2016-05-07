@@ -10,7 +10,7 @@ public class EagleControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown("Jump") || Input.GetKeyUp(KeyCode.JoystickButton0))
+        if (Input.GetKeyDown("Jump") || Input.GetButtonUp("A Button"))
         {
             Debug.Log("what");
             //baldEagleLiteCharacter.Soar();
