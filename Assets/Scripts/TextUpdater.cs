@@ -7,15 +7,17 @@ public class TextUpdater : MonoBehaviour {
     public Text TimerText;
     public Text ScoreText;
     public Text FinalScore;
+    public Text StartText;
 
     public static int Score = 0;
 
-    float initTimeVal = 300.0f;
+    float initTimeVal = 3.0f;
     float timeLeft;
     private bool gamePaused = false;
+    private bool gameStarted = false;
 	// Use this for initialization
 	void Start () {
-        timeLeft = initTimeVal;
+        Time.timeScale = 0;
         SetScore();
 	}
 	
@@ -31,23 +33,24 @@ public class TextUpdater : MonoBehaviour {
         else //if (Mathf.Round(timeLeft) == 0)
         {
             ScoreText.text = "";
-            FinalScore.text = "Final score: " + Score;
+            if (gameStarted)
+            {
+                FinalScore.text = "Final score: " + Score;
+            }
+            StartText.text = "Tap to start";
             Time.timeScale = 0;
         }
 
-        TimerText.text = "Time Left: " + Mathf.Round(timeLeft);
+        if (gameStarted)
+        {
+            TimerText.text = "Time Left: " + Mathf.Round(timeLeft);
+        }
 
-        if (Input.GetButtonUp("Tap"))
+        if (Input.GetButtonUp("Tap")) //Replace Tap with Fire1 to use the keyboard's control to pause
         {
             if (Mathf.Round(timeLeft) == 0)
             {
-                timeLeft = initTimeVal;
-                Time.timeScale = 1;
-                Score = 0;
-                TimerText.text = "";
-                FinalScore.text = "";
-                gamePaused = false;
-                SetScore();
+                InitGame();
             }
             else if (gamePaused) //Resume
             {
@@ -62,6 +65,19 @@ public class TextUpdater : MonoBehaviour {
                 gamePaused = true;
             }
         }
+    }
+
+    private void InitGame()
+    {
+        timeLeft = initTimeVal;
+        Time.timeScale = 1;
+        Score = 0;
+        TimerText.text = "";
+        FinalScore.text = "";
+        StartText.text = "";
+        gamePaused = false;
+        gameStarted = true;
+        SetScore();
     }
 
     void SetScore() {
