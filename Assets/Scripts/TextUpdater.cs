@@ -11,7 +11,7 @@ public class TextUpdater : MonoBehaviour {
 
     public static int Score = 0;
 
-    float initTimeVal = 300.0f;
+    float initTimeVal = 30.0f;
     float timeLeft;
     private bool gamePaused = false;
     private bool gameStarted = false;
@@ -46,7 +46,7 @@ public class TextUpdater : MonoBehaviour {
             TimerText.text = "Time Left: " + Mathf.Round(timeLeft);
         }
 
-        if (Input.GetButtonUp("Tap")) //Replace Tap with Fire1 to use the keyboard's control to pause
+		if (Input.GetButtonUp("Fire1")) //Replace Tap with Fire1 to use the keyboard's control to pause
         {
             if (Mathf.Round(timeLeft) == 0)
             {
