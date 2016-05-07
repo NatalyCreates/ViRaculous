@@ -1,9 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class CandyGenerator : MonoBehaviour {
 
     public GameObject cookiePrefab;
+    private IList<Object> cookieCollection = new List<Object>();
+
+    private bool rotateCookiesEffectOn = true;
+    private bool floatingCookiesEffectOn = true;
 
     /*
     void OnGUI()
@@ -29,6 +34,11 @@ public class CandyGenerator : MonoBehaviour {
             float yVal = 0f;
             //yVal = 300f;
 
+            if(floatingCookiesEffectOn)
+            {
+                yVal = Random.Range(0f, 100f);
+            }
+
 			if (xVal < 0 && -500 < xVal) {
 				continue;
 			}
@@ -37,12 +47,26 @@ public class CandyGenerator : MonoBehaviour {
             {
                 yVal = g.gameObject.GetComponent<Terrain>().SampleHeight(new Vector3(xVal, 0, zVal));
             }*/
-            Instantiate(cookiePrefab, new Vector3(xVal, yVal + 2f, zVal), Quaternion.Euler(270f, 0f, 0f));//y+5f
+
+            float zRot = 0f;
+
+            if(rotateCookiesEffectOn)
+            {
+                zRot = Random.Range(0f, 360f);
+            }
+
+            cookieCollection.Add(Instantiate(cookiePrefab, new Vector3(xVal, yVal + 2f, zVal), Quaternion.Euler(270f, 0f, zRot)));//y+5f
         }
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+        if (rotateCookiesEffectOn)
+        {
+            foreach (GameObject obj in cookieCollection)
+            {
+                obj.transform.Rotate(Vector3.forward, 10);
+            }
+        }
 	}
 }

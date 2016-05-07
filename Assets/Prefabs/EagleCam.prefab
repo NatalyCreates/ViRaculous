@@ -2776,7 +2776,7 @@ GameObject:
   - 95: {fileID: 9596422}
   - 54: {fileID: 5468356}
   - 136: {fileID: 13628306}
-  - 114: {fileID: 11443142}
+  - 114: {fileID: 11401404}
   m_Layer: 0
   m_Name: EagleCam
   m_TagString: Eagle
@@ -4447,7 +4447,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 176618}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -27.8, y: 1.49, z: 0}
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_Children:
   - {fileID: 478862}
@@ -6489,7 +6489,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11443142
+--- !u!114 &11401404
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -6502,7 +6502,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baldEagleAnimator: {fileID: 9596422}
   baldEagleRigid: {fileID: 5468356}
-  CollisionSound: {fileID: 8300000, guid: 941cfe6893d4e5d4abddf428120d0892, type: 3}
+  CollisionSound: {fileID: 8300000, guid: 1f3dccccc47f64873a54b08f81e1ad3b, type: 3}
   BackgroundSound: {fileID: 8300000, guid: 40b582e2b64d14c1f8b63156f46f8a3e, type: 3}
 --- !u!124 &12489620
 Behaviour:
