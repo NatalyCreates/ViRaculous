@@ -33,6 +33,7 @@ public class TextUpdater : MonoBehaviour {
         else //if (Mathf.Round(timeLeft) == 0)
         {
             ScoreText.text = "";
+			TimerText.text = "";
             if (gameStarted)
             {
                 FinalScore.text = "Final score: " + Score;
