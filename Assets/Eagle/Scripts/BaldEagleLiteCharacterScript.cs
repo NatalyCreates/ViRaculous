@@ -17,18 +17,24 @@ public class BaldEagleLiteCharacterScript : MonoBehaviour {
 	public float speedDumpingTime=.1f;
 	public float groundedCheckOffset=1f;
 
+    public AudioClip CollisionSound;
+    private AudioSource audio;
+
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Candy")
         {
             //Attack();
             Destroy(other.gameObject);
+            audio.PlayOneShot(CollisionSound, 1.0F);
+            TextUpdater.Score += 10;
         }
     }
 
 	void Start(){
 		baldEagleAnimator = GetComponent<Animator> ();
 		baldEagleRigid = GetComponent<Rigidbody> ();
+        audio = gameObject.AddComponent<AudioSource>();
 	}
 
     void Update(){

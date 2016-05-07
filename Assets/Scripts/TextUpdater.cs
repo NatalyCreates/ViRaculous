@@ -29,6 +29,7 @@ public class TextUpdater : MonoBehaviour {
             FinalScore.text = "Final score: " + Score;
         }
 
+        SetScore();
         TimerText.text = "Time Left: " + Mathf.Round(timeLeft);
 	}
 
