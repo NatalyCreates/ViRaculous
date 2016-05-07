@@ -47,7 +47,7 @@ public class EagleControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick 1 button 1"))
         {
             Debug.Log("Soar");
             animState = AnimState.Fly;

@@ -47,7 +47,7 @@ public class TextUpdater : MonoBehaviour {
             TimerText.text = "Time Left: " + Mathf.Round(timeLeft);
         }
 
-		if (Input.GetButtonUp("Fire1")) //Replace Tap with Fire1 to use the keyboard's control to pause
+		if (Input.GetKeyDown("joystick 1 button 2")) //Replace Tap with Fire1 to use the keyboard's control to pause
         {
             if (Mathf.Round(timeLeft) == 0)
             {
