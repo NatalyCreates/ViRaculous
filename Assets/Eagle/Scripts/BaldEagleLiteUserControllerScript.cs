@@ -8,6 +8,8 @@ public class BaldEagleLiteUserControllerScript : MonoBehaviour {
     public BaldEagleLiteCharacterScript baldEagleLiteCharacter;
 	public float upDownInputSpeed=3f;
 
+
+
     //private IGem gem;
 
     void Start () {
