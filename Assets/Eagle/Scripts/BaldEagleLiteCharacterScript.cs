@@ -19,6 +19,8 @@ public class BaldEagleLiteCharacterScript : MonoBehaviour {
 
     public AudioClip CollisionSound;
 	public AudioClip BackgroundSound;
+	public AudioClip CookieMonster;
+	private AudioSource cookieMonster;
 	private AudioSource backgroundAudio;
 	private AudioSource collisionAudio;
 
@@ -27,9 +29,15 @@ public class BaldEagleLiteCharacterScript : MonoBehaviour {
         if (other.gameObject.tag == "Candy")
         {
             //Attack();
-            Destroy(other.gameObject);
-			collisionAudio.PlayOneShot(CollisionSound, 2.0F);
 			TextUpdater.Score += 10;
+			Destroy(other.gameObject);
+			if (TextUpdater.Score % 50 == 0) {
+				cookieMonster.PlayOneShot(CookieMonster, 0.8F);
+			} else {
+				collisionAudio.PlayOneShot(CollisionSound, 2.0F);
+			}
+
+
         }
     }
 
@@ -38,6 +46,7 @@ public class BaldEagleLiteCharacterScript : MonoBehaviour {
 		baldEagleRigid = GetComponent<Rigidbody> ();
 		collisionAudio = gameObject.AddComponent<AudioSource>();
 		backgroundAudio = gameObject.AddComponent<AudioSource>();
+		cookieMonster = gameObject.AddComponent<AudioSource>();
 		backgroundAudio.PlayOneShot(BackgroundSound, 0.1F);
 	}
 
