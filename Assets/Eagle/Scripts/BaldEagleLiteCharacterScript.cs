@@ -47,7 +47,21 @@ public class BaldEagleLiteCharacterScript : MonoBehaviour {
 		GroundedCheck ();
 	}
 
-	void GroundedCheck(){
+	void GroundedCheck() {
+        if (gameObject.transform.position.y <= 0.3f)
+        {
+            if (!soaring && !isGrounded)
+            {
+                Landing();
+                isGrounded = true;
+            }
+        }
+        else
+        {
+            isGrounded = false;
+        }
+
+        /*
 		RaycastHit hit;
 		if (Physics.Raycast (transform.position+Vector3.up*groundedCheckOffset, Vector3.down, out hit, groundCheckDistance)) {
 			if (!soaring && !isGrounded ) {
@@ -57,18 +71,21 @@ public class BaldEagleLiteCharacterScript : MonoBehaviour {
 		} else {
 			isGrounded=false;
 		}
+        */
 	}
 
 	public void Landing(){
 		baldEagleAnimator.SetBool ("Landing",true);
 		baldEagleAnimator.applyRootMotion = true;
-		baldEagleRigid.useGravity = true;
+		//baldEagleRigid.useGravity = true;
 		isFlying = false;
 	}
 	
 	public void Soar(){
+        Debug.Log("soar");
         if (isGrounded)
         {
+            Debug.Log("was grounded");
             baldEagleAnimator.SetBool("Landing", false);
             baldEagleAnimator.SetBool("IsSoaring", true);
             baldEagleRigid.useGravity = false;
