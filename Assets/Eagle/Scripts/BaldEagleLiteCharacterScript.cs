@@ -17,6 +17,15 @@ public class BaldEagleLiteCharacterScript : MonoBehaviour {
 	public float speedDumpingTime=.1f;
 	public float groundedCheckOffset=1f;
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Candy")
+        {
+            //Attack();
+            Destroy(other.gameObject);
+        }
+    }
+
 	void Start(){
 		baldEagleAnimator = GetComponent<Animator> ();
 		baldEagleRigid = GetComponent<Rigidbody> ();
