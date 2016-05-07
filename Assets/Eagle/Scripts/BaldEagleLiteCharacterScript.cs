@@ -18,7 +18,9 @@ public class BaldEagleLiteCharacterScript : MonoBehaviour {
 	public float groundedCheckOffset=1f;
 
     public AudioClip CollisionSound;
-    private AudioSource audio;
+	public AudioClip BackgroundSound;
+	private AudioSource backgroundAudio;
+	private AudioSource collisionAudio;
 
     void OnTriggerEnter(Collider other)
     {
@@ -26,15 +28,17 @@ public class BaldEagleLiteCharacterScript : MonoBehaviour {
         {
             //Attack();
             Destroy(other.gameObject);
-            audio.PlayOneShot(CollisionSound, 1.0F);
-            TextUpdater.Score += 10;
+			collisionAudio.PlayOneShot(CollisionSound, 2.0F);
+			TextUpdater.Score += 10;
         }
     }
 
 	void Start(){
 		baldEagleAnimator = GetComponent<Animator> ();
 		baldEagleRigid = GetComponent<Rigidbody> ();
-        audio = gameObject.AddComponent<AudioSource>();
+		collisionAudio = gameObject.AddComponent<AudioSource>();
+		backgroundAudio = gameObject.AddComponent<AudioSource>();
+		backgroundAudio.PlayOneShot(BackgroundSound, 0.1F);
 	}
 
     void Update(){
@@ -53,7 +57,21 @@ public class BaldEagleLiteCharacterScript : MonoBehaviour {
 		GroundedCheck ();
 	}
 
-	void GroundedCheck(){
+	void GroundedCheck() {
+        if (gameObject.transform.position.y <= 0.3f)
+        {
+            if (!soaring && !isGrounded)
+            {
+                Landing();
+                isGrounded = true;
+            }
+        }
+        else
+        {
+            isGrounded = false;
+        }
+
+        /*
 		RaycastHit hit;
 		if (Physics.Raycast (transform.position+Vector3.up*groundedCheckOffset, Vector3.down, out hit, groundCheckDistance)) {
 			if (!soaring && !isGrounded ) {
@@ -63,18 +81,21 @@ public class BaldEagleLiteCharacterScript : MonoBehaviour {
 		} else {
 			isGrounded=false;
 		}
+        */
 	}
 
 	public void Landing(){
 		baldEagleAnimator.SetBool ("Landing",true);
 		baldEagleAnimator.applyRootMotion = true;
-		baldEagleRigid.useGravity = true;
+		//baldEagleRigid.useGravity = true;
 		isFlying = false;
 	}
 	
 	public void Soar(){
+        Debug.Log("soar");
         if (isGrounded)
         {
+            Debug.Log("was grounded");
             baldEagleAnimator.SetBool("Landing", false);
             baldEagleAnimator.SetBool("IsSoaring", true);
             baldEagleRigid.useGravity = false;
