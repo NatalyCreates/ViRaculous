@@ -22,11 +22,16 @@ public class CandyGenerator : MonoBehaviour {
 
         for (int i = 0; i < 300; i++)
         {
-            float xVal = Random.Range(0, ground.GetComponent<Renderer>().bounds.size.x) /100;
-            float zVal = Random.Range(0, ground.GetComponent<Renderer>().bounds.size.z) /100;
+			float xBound = (int) (0.5 * ground.GetComponent<Renderer>().bounds.size.x);
+			float zBound = (int) (0.5 * ground.GetComponent<Renderer>().bounds.size.z);
+			float xVal = Random.Range(-xBound, xBound) / 100;
+			float zVal = Random.Range(-zBound, zBound) / 100;
             float yVal = 0f;
             //yVal = 300f;
 
+			if (xVal < 0 && -500 < xVal) {
+				continue;
+			}
             /*
             foreach (GameObject g in GameObject.FindGameObjectsWithTag("Mountains"))
             {

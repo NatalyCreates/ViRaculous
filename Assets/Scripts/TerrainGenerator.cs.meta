@@ -1,12 +1,10 @@
 fileFormatVersion: 2
-guid: 9934659a09ae7b845a77b1db97c8b72f
-timeCreated: 1462609137
+guid: a431e9ac3d215400195a3192b7970c44
+timeCreated: 1462612010
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences:
-  - baldEagleAnimator: {instanceID: 0}
-  - CollisionSound: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
