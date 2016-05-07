@@ -6527,6 +6527,8 @@ MonoBehaviour:
   meanForwardSpeed: 1.5
   speedDumpingTime: 0.1
   groundedCheckOffset: 1
+  CollisionSound: {fileID: 8300000, guid: 941cfe6893d4e5d4abddf428120d0892, type: 3}
+  BackgroundSound: {fileID: 8300000, guid: b6b2da4d4e6c5e945a6d6ca16e6abc8a, type: 3}
 --- !u!124 &12489620
 Behaviour:
   m_ObjectHideFlags: 1
