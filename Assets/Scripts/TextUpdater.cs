@@ -11,7 +11,7 @@ public class TextUpdater : MonoBehaviour {
 
     public static int Score = 0;
 
-    float initTimeVal = 3.0f;
+    float initTimeVal = 300.0f;
     float timeLeft;
     private bool gamePaused = false;
     private bool gameStarted = false;
