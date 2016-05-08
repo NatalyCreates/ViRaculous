@@ -25,12 +25,12 @@ public class CandyGenerator : MonoBehaviour {
         GameObject ground = GameObject.FindWithTag("Ground");
         Transform rt = ground.transform;
 
-        for (int i = 0; i < 300; i++)
+        for (int i = 0; i < 5000; i++)
         {
 			float xBound = (int) (0.5 * ground.GetComponent<Renderer>().bounds.size.x);
 			float zBound = (int) (0.5 * ground.GetComponent<Renderer>().bounds.size.z);
-			float xVal = Random.Range(-xBound, xBound) / 100;
-			float zVal = Random.Range(-zBound, zBound) / 100;
+			float xVal = Random.Range(-xBound, xBound) / 10;
+			float zVal = Random.Range(-zBound, zBound) / 10;
             float yVal = 0f;
             //yVal = 300f;
 

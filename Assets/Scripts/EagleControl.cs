@@ -13,7 +13,7 @@ public class EagleControl : MonoBehaviour {
     float forwardAcceleration = 0f;
     float yawVelocity = 0f;
     float upDown = 0f;
-    float forwardSpeed = 25f;
+    float forwardSpeed = 20f;
 
     enum AnimState { Ground, Fly };
     AnimState animState;
@@ -83,7 +83,7 @@ public class EagleControl : MonoBehaviour {
 
             transform.position += transform.forward * Time.deltaTime * forwardSpeed;
 
-            float yPos = Mathf.Min(gameObject.transform.position.y + upDown, 80f);
+            float yPos = Mathf.Max(gameObject.transform.position.y + upDown, 80f);
 
             gameObject.transform.position = new Vector3(gameObject.transform.position.x, yPos, gameObject.transform.position.z);
 
