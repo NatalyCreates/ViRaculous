@@ -6,8 +6,8 @@ public class EagleControl : MonoBehaviour {
     public Animator baldEagleAnimator;
     public Rigidbody baldEagleRigid;
     public AudioClip CollisionSound;
-    public AudioClip BackgroundSound;
-    private AudioSource backgroundAudio;
+    //public AudioClip BackgroundSound;
+    //private AudioSource backgroundAudio;
     private AudioSource collisionAudio;
 
     float forwardAcceleration = 0f;
@@ -38,8 +38,8 @@ public class EagleControl : MonoBehaviour {
         baldEagleRigid = GetComponent<Rigidbody>();
 
         collisionAudio = gameObject.AddComponent<AudioSource>();
-        backgroundAudio = gameObject.AddComponent<AudioSource>();
-        backgroundAudio.PlayOneShot(BackgroundSound, 0.1F);
+        //backgroundAudio = gameObject.AddComponent<AudioSource>();
+        //backgroundAudio.PlayOneShot(BackgroundSound, 0.1F);
 
         baldEagleAnimator.SetBool("Landing", false);
         baldEagleAnimator.SetBool("IsSoaring", false);
